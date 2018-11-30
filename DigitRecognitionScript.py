@@ -37,10 +37,10 @@ with gzip.open('data/t10k-labels-idx1-ubyte.gz', 'rb') as f:
     test_lbl = f.read()
 
 #Reshape images and labels
-train_img = ~np.array(list(train_img[16:])).reshape(60000, 1, 784).astype(np.uint8) / 255.0
-train_lbl =  np.array(list(train_lbl[ 8:])).astype(np.uint8)
+train_img = np.array(list(train_img[16:])).reshape(60000, 1, 784).astype(np.uint8) / 255.0
+train_lbl = np.array(list(train_lbl[ 8:])).astype(np.uint8)
 
-test_img = ~np.array(list(test_img[16:])).reshape(10000, 784).astype(np.uint8) / 255.0
+test_img = np.array(list(test_img[16:])).reshape(10000, 784).astype(np.uint8) / 255.0
 test_lbl = np.array(list(test_lbl[8:])).astype(np.uint8)
 
 # convert class vectors to binary class matrices
@@ -54,7 +54,6 @@ encoder.fit(train_lbl)
 outputs = encoder.transform(train_lbl)
 
 #Training the model
-model.fit(inputs, outputs, epochs=20, batch_size=128)
-
+model.fit(inputs, outputs, epochs=6, batch_size=128)
 
 
