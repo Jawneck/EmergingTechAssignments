@@ -8,6 +8,7 @@ import keras as kr
 import sklearn.preprocessing as pre
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
+from PIL import Image
 
 def nueralNetwork():
     #Starting a neural network, building it by layers.
@@ -47,6 +48,15 @@ def nueralNetwork():
     model.fit(inputs, outputs, epochs=6, batch_size=128)
 
     nueralNetwork()
+
+def inputImage(userImage):
+    
+    #Reading in an image and converting it to greyscale.
+    image = Image.open(userImage).convert('L')
+
+    #Resizing the image into 28x28 pixels so it is compatible.
+    image = image.resize((28, 28), Image.BICUBIC)
+
 
 def menu():
 
