@@ -30,12 +30,12 @@ Having installed python with anaconda along with keras and tensorflow
 3. using anaconda prompt use command 'python digitrec.py' to run the script
 
 ### References
-https://www.anaconda.com/
-https://github.com/ianmcloughlin/jupyter-teaching-notebooks
-https://docs.scipy.org/doc/numpy/reference/routines.random.html
-https://brilliant.org/wiki/poisson-distribution/
-https://archive.ics.uci.edu/ml/datasets/Iris
-http://yann.lecun.com/exdb/mnist/
-https://www.python-course.eu/neural_network_mnist.php
-https://keras.io/models/sequential/
-https://www.youtube.com/watch?v=dkrXgzuZk3k&list=PL1H1sBF1VAKXCayO4KZqSmym2Z_sn6Pha
+<br>https://www.anaconda.com/
+<br>https://github.com/ianmcloughlin/jupyter-teaching-notebooks
+<br>https://docs.scipy.org/doc/numpy/reference/routines.random.html
+<br>https://brilliant.org/wiki/poisson-distribution/
+<br>https://archive.ics.uci.edu/ml/datasets/Iris
+<br>http://yann.lecun.com/exdb/mnist/
+<br>https://www.python-course.eu/neural_network_mnist.php
+<br>https://keras.io/models/sequential/
+<br>https://www.youtube.com/watch?v=dkrXgzuZk3k&list=PL1H1sBF1VAKXCayO4KZqSmym2Z_sn6Pha
