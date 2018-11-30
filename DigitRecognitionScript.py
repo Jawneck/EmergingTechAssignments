@@ -36,9 +36,6 @@ def nueralNetwork():
     train_img = np.array(list(train_img[16:])).reshape(60000, 1, 784).astype(np.uint8) / 255.0
     train_lbl = np.array(list(train_lbl[ 8:])).astype(np.uint8)
 
-    # convert class vectors to binary class matrices
-    train_lbl = kr.utils.to_categorical(train_lbl)
-
     #Reshape image array
     inputs = train_img.reshape(60000, 784)
 
@@ -49,4 +46,12 @@ def nueralNetwork():
     #Training the model
     model.fit(inputs, outputs, epochs=6, batch_size=128)
 
-nueralNetwork()
+    nueralNetwork()
+
+def menu():
+
+    print("Welcome to my nueral network")
+    print("Enter full path of image including file extension")
+    userImage = input("")
+
+menu()
