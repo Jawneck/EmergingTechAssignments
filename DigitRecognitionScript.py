@@ -6,20 +6,25 @@ import gzip
 import keras as kr
 #Importing sklearn.preprocessing for encoding categorical variables.
 import sklearn.preprocessing as pre
+#Importing Sequential, Dense and Dropout for building model.
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
+#Importing Image from python image library for use with images.
 from PIL import Image
 
 def nueralNetwork(userImage):
     #Starting a neural network, building it by layers.
     model = Sequential()
 
-    model.add(Dense(512, activation='relu',kernel_initializer="normal", input_dim=784))
+    #https://github.com/keras-team/keras/blob/master/examples/mnist_mlp.py#L53
+    #Creating a sequential model
+    model.add(Dense(512, activation='relu', input_dim=784))
     model.add(Dropout(0.1))
-    model.add(Dense(512, activation='relu',kernel_initializer="normal"))
+    model.add(Dense(512, activation='relu'))
     model.add(Dropout(0.1))
     model.add(Dense(units=10, activation='softmax'))
 
+    #Printing a summary of the model.
     model.summary()
 
     #Building the graph.
@@ -40,12 +45,20 @@ def nueralNetwork(userImage):
     #Reshape image array
     inputs = train_img.reshape(60000, 784)
 
-    encoder = pre.LabelBinarizer()
+    #Binarize labels in a one-vs-all fashion
+    encoder = pre.LabelBinarizer()#
+    #Fit label encoder
     encoder.fit(train_lbl)
+    #Transforming labels to normalized encoding.
     outputs = encoder.transform(train_lbl)
 
     #Training the model
     model.fit(inputs, outputs, epochs=6, batch_size=128)
+
+    #Transforming labels back to original encoding and predicting the user image.
+    print("According to the nueral network the digit is: ")
+    print(encoder.inverse_transform(model.predict(userImage)))
+
 
 def inputImage(userImage):
     
@@ -57,7 +70,7 @@ def inputImage(userImage):
     image = image.resize((28, 28), Image.BICUBIC)
 
     #https://www.youtube.com/watch?v=DdNvYxtXlD8
-    #Get the data from the image
+    #Getting the data from the image
     image = list(image.getdata())
     
     #https://www.youtube.com/watch?v=yi_dDsRqvK0
@@ -67,8 +80,11 @@ def inputImage(userImage):
     #Reshaping the image for use with neural network.
     image = np.array(list(image)).reshape(1, 784)
 
-def menu():
+    #Run the neural network
+    nueralNetwork(image) 
 
+def menu():
+    #Getting an image from the user.
     print("Welcome to my nueral network")
     print("Enter full path of image including file extension")
     userImage = input("")
